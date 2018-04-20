@@ -1,0 +1,11 @@
+h1 {
+  text-align: center;
+  margin-top: 150px; 
+}
+
+.logIn_btn {
+  width: 50%;
+  height: 80px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
