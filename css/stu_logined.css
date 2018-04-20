@@ -1,0 +1,33 @@
+body {
+  margin: 0 auto;
+  text-align: center;
+}
+
+header {
+  width: 100%;
+  height: 10rem;
+  background-color: rgb(243, 190, 211);
+}
+
+.container .glyphicon {
+  width: 10rem;
+  height: 10rem;
+  margin-top: 5rem;
+}
+
+.a_block {
+  display: block;
+  background-color: rgba(231, 238, 192, 0.884);
+  font-size: 4rem;
+  width: 50%;
+  height: 200px;
+  float: left;
+  text-align: center;
+  margin: 0 auto;
+  border: slategrey solid 1px;
+}
+
+#btn_exit {
+  width: 30%;
+  margin-top: 2rem;
+}
