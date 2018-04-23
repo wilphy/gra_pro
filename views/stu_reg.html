@@ -13,6 +13,32 @@
 
   <link rel="stylesheet" href="../css/stu_login_reg.css">
 
+  <script>
+    $(function () {
+      $('#btn_reg').submit(function () {
+        $.ajax({
+          url: '/reg',
+          type: 'post',
+          data: {
+            user: $('#user').val(),
+            pass: $('#pass').val()
+          },
+          dataType: 'json',
+          success(res) {
+            if (res.code != 0) {
+              alert('注册失败', 'res.msg');
+            } else {
+              alert('注册成功');
+            }
+          },
+          error: function () {
+            alert('注册失败，通信故障');
+          }
+        });
+      });
+    });
+  </script>
+
 </head>
 
 <body>
@@ -22,35 +48,42 @@
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">返回</span>
   </a>
 
-  <h1>学生注册</h1>
+  <!-- 注册表单 -->
+  <div class="wrap wrap-sm">
+    <div class="header">
+      <h1>注册</h1>
+    </div>
+    <div class="form">
+      <form id="signup" action="../server.js" method="post" enctype="multipart/form-data">
 
-  <!-- 登录表单 -->
-  <div class="container">
+        <div class="input-wrap">
+          <label>用户名</label>
+          <input data-rule='pattern:"^[a-z0-9]*$"|maxlength:18|minlength:4' type="text" name="user" id="user" class="input-control">
+          <div id="username-input-error" class="input-error">用户名格式有误</div>
+        </div>
+        <div class="input-wrap">
+          <label>密码</label>
+          <input data-rule='minlength:6|maxlength:64' type="password" name="pass" id="pass" class="input-control">
+          <div id="password-input-error" class="input-error">密码格式有误</div>
+        </div>
+        <!-- <div class="input-wrap">
+          <label>自我介绍</label>
+          <input data-rule='required:false|maxlength:1024' type="text" name="intro" class="input-control">
+          <div id="intro-input-error" class="input-error">自我介绍格式有误</div>
+        </div> -->
+        <a href="me_notLogIn.html">
+          <input class="button-control" type="submit" id="#btn_reg" value="注册">
+        </a>
+      </form>
 
-    <form action="">
-
-      <div class="input-group input-group-lg" id="user_input">
-        <span class="input-group-addon" id="sizing-addon1">
-          用户名:
-        </span>
-        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
-      </div>
-
-      <div class="input-group input-group-lg" id="pwd_input">
-        <span class="input-group-addon" id="sizing-addon1">
-          密&nbsp&nbsp&nbsp&nbsp码:
-        </span>
-        <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
-      </div>
-
-      <a href="./reg_succes.html">
-        <input type="button" value="提交注册" id="btn_login">
-      </a>
       <a href="stu_login.html">已有账号？马上登陆</a>
-
-    </form>
-
+    </div>
   </div>
+
+  <script src="../js/validator.js"></script>
+  <script src="../js/input.js"></script>
+  <script src="../js/main.js"></script>
+
 
 </body>
 

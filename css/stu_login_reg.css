@@ -1,9 +1,14 @@
 body {
-  background: url('../img/bg-login.jpg')
+  background-color: rgb(206, 243, 191);
+  /* background: url('../img/bg-login.jpg'); */
+}
+
+.header {
+  margin-top: 30px;
 }
 
 h1 {
-  color: #fff;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -28,15 +33,64 @@ h1 {
   margin: 30px 0;
 }
 
-#btn_login{
+#btn_reg, #btn_login{
   width: 50%;
   height: 4rem;
   background-color: rgb(216, 180, 240);
 }
 
 a {
-  color: papayawhip;
+  color: #000;
   font-size: 2rem;
   display: block;
   margin-top: 2rem;
+}
+
+.wrap {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+.wrap-sm {
+  max-width: 450px;
+}
+
+.form {
+  padding: 20px;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+}
+
+.form,
+.input-control,
+.button-control {
+  border-radius: 3px;
+}
+
+.input-wrap {
+  margin-bottom: 10px;
+}
+
+.input-wrap label {
+  padding: 5px 0;
+  display: block;
+}
+
+.input-control {
+  color: #444;
+  width: 100%;
+}
+
+.button-control, .input-control {
+  padding: 5px 10px;
+  border: 1px solid #999;
+}
+
+.input-error {
+  padding-top: 5px;
+  font-size:90%;
+  color: #a10;
+  display: none;
 }
