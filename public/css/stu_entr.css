@@ -1,0 +1,36 @@
+body {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+a {
+  display: inline;
+}
+
+h1 {
+  text-align: center;
+}
+
+img {
+  width: 3rem;
+  height: 3rem;
+}
+
+form {
+  margin: 0 auto;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+#user,#pass {
+  width: 70%;
+  height: 3rem;
+  margin: 2rem 0;
+}
+
+#btn_reg,#btn_login {
+  width: 30%;
+  height: 3rem;
+  background-color: #66ff66;
+  margin: 2rem 1.5rem;
+}

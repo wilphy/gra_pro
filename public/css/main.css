@@ -1,0 +1,43 @@
+body {
+  background-color: #eee;
+  margin: 0;
+}
+
+.footer_nav {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+#home {
+  width: 33%;
+  float: left;
+}
+
+#search {
+  width: 34%;
+  justify-content: center;
+}
+
+#me {
+  width: 33%;
+  float: right;
+}
+
+#img_icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+#img_head {
+  width: 8rem;
+  height: 8rem;
+  border: 1px solid #ddd;
+  margin: 1rem;
+}
+
+/* #btn_back {
+  width: 2rem;
+  height: 2rem;
+} */
+

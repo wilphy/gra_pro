@@ -2,6 +2,14 @@ const http = require('http');
 const fs = require('fs');
 const mysql = require('mysql');
 const url = require('url');
+const express = require('express');
+const path = require('path');
+
+
+const app = express();
+
+app.use(express.static('public'));
+app.use(express.static('static'));
 
 //数据库
 let db = mysql.createPool({
@@ -19,7 +27,9 @@ db.query(`SELECT * FROM stu_user`, (err, data) => {
   }
 });
 
-//hhtp服务器
+
+
+//hhtp服务器 登录、注册
 let httpServer = http.createServer((req, res) => {
 
   let {
@@ -27,8 +37,8 @@ let httpServer = http.createServer((req, res) => {
     query
   } = url.parse(req.url, true);
 
+  //注册接口
   if (pathname == '/reg') {
-    //注册接口
 
     let {
       user,
@@ -107,10 +117,10 @@ let httpServer = http.createServer((req, res) => {
     console.log('请求了注册', query);
 
 
-
+    //登录接口
   } else if (pathname == '/login') {
 
-    //登录接口
+
     let {
       user,
       pass
@@ -181,6 +191,7 @@ let httpServer = http.createServer((req, res) => {
     console.log('请求了登录', query);
 
   } else {
+    //读文件
     fs.readFile(`views${pathname}`, (err, data) => {
       if (err) {
         res.writeHead(404);
@@ -192,8 +203,8 @@ let httpServer = http.createServer((req, res) => {
       res.end();
     });
   }
-
-
+  
 });
 
 httpServer.listen(8080);
+
