@@ -1,8 +1,27 @@
-#search {
+#search-after {
   background-color: #ddd;
 }
 
 .input-group {
   width: 80%;
   margin: 0 auto;
+}
+
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2rem; 
+  margin-bottom: 2rem; 
+}
+
+.btn-group {
+  width: 25%;
+  margin-left: 1rem;
+}
+
+
+.search_dropdown_group {
+  margin: 0 auto; 
+  background-color: #aaa;
 }

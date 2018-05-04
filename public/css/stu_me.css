@@ -9,6 +9,8 @@ header {
   background-color: rgb(248, 217, 229);
 }
 
+
+
 #container {
   background-color: #fff;
 }
@@ -24,7 +26,8 @@ header {
   display: inline;
 } */
 
-#img_a {
+.img_a {
+  margin-top: 3rem;
   width: 6rem;
   height: 6rem;
 }

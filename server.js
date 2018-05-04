@@ -27,8 +27,6 @@ db.query(`SELECT * FROM stu_user`, (err, data) => {
   }
 });
 
-
-
 //hhtp服务器 登录、注册
 let httpServer = http.createServer((req, res) => {
 

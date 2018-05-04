@@ -5,6 +5,8 @@ body {
 
 a {
   display: inline;
+  text-decoration: none;
+  color: #333;
 }
 
 h1 {

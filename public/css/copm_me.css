@@ -11,6 +11,9 @@ header {
 
 #container {
   background-color: #fff;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #img_head {
@@ -18,11 +21,15 @@ header {
   height: 5rem;
 }
 
-#img_a {
+.img_a {
+  margin-top: 3rem;
   width: 6rem;
   height: 6rem;
 }
 
+h3 {
+  margin-top: 3rem;
+}
 
 
 .a_block {
