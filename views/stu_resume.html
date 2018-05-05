@@ -13,6 +13,14 @@
 
   <link rel="stylesheet" href="../public/css/main.css">
 
+  <style>
+
+input {
+  margin: 0 auto;
+}
+
+  </style>
+
 </head>
 
 <body>
@@ -20,19 +28,19 @@
   <header>
     <!-- 返回按钮 -->
     <a href="stu_me.html" id="back_btn">
-        <img id="img_icon" src="../static/icon/back.png" alt="">
+      <img id="img_icon" src="../static/icon/back.png" alt="">
     </a>
 
     <h1 style="text-align: center">我的简历</h1>
 
   </header>
 
-  <ul class="stu_like">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
+  <form name="form1" id="form1" style="margin: 0 auto; text-align: center;">
+
+      <input  type="file" name="photo" id="photo" class="btn btn-lg">
+      <input type="button" name="b1" value="提交" onclick="fsubmit()" class="btn btn-lg btn-info">
+
+  </form>
 
 </body>
 

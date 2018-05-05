@@ -7,16 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>主页</title>
 
-  <!-- <script src="/lib/jquery-3.2.1.js"></script>
-  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
-  <script src="/lib/bootstrap/js/bootstrap.min.js"></script> -->
 
-  <script src="../public/lib/jquery-3.3.1.js"></script>
+  <!-- <script src="../public/lib/jquery-3.3.1.js"></script>
   <link rel="stylesheet" href="../public/lib/bt-3.3.7.min.css">
-  <script src="../public/lib/bt-3.3.7.min.js"></script>
+  <script src="../public/lib/bt-3.3.7.min.js"></script> -->
 
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <!-- <script src="https://unpkg.com/vue"></script> -->
 
   <link rel="stylesheet" href="../public/css/main.css">
   <link rel="stylesheet" href="../public/css/home.css">
@@ -53,11 +52,90 @@
 
   </div>
 
-  <article>
-    <h1>Welcome</h1>
-  </article>
+  <ul class="media-list list-group">
 
-  <ul class="list-group">
+    <li class="media list-group-item list-group-item-success">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="../public/img/head04.jpg">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">沉睡中的大学生：你不失业，天理难容</h4>
+        <h5 class="author">
+          周小飞
+          <span class="article_date">2018.04.24 00:38</span>
+        </h5>
+      </div>
+    </li>
+
+    <li class="media list-group-item list-group-item-info" >
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="../public/img/head02.jpg">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">大学毕业，多少人活成了廉价劳动力</h4>
+        <br>
+        <h5 class="author">
+          马小广
+          <span class="article_date">2018.04.24 00:38</span>
+        </h5>
+      </div>
+    </li>
+
+    <li class="media list-group-item list-group-item-danger">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="../public/img/head03.jpg">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">如何判断一个公司“靠不靠谱”？</h4>
+        <br>
+        <h5 class="author">
+          廖小晴
+          <span class="article_date">2018.04.18 12:48</span>
+        </h5>
+      </div>
+    </li>
+
+    <li class="media list-group-item list-group-item-warning">
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object" src="../public/img/head04.jpg">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">你的同龄人正在抛弃你</h4>
+          <br>
+          <h5 class="author">
+            王小烨
+            <span class="article_date">2018.04.24 00:38</span>
+          </h5>
+        </div>
+      </li>
+
+      <li class="media list-group-item list-group-item-default">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" src="../public/img/head05.jpg">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">那些年沉浸在大学宿舍的你</h4>
+            <br>
+            <h5 class="author">
+              林小首
+              <span class="article_date">2018.04.24 00:38</span>
+            </h5>
+          </div>
+        </li>
+
+  </ul>
+
+  <!-- <ul class="list-group">
     <li class="list-group-item list-group-item-default article">
       <span class="badge">800/天</span>
       吉他手
@@ -78,40 +156,37 @@
       <span class="badge">50/天</span>
       发小广告
     </li>
-  </ul>
+  </ul> -->
 
 
   <!-- 底部导航 -->
   <footer class="footer_nav">
-      <nav class="navbar-fixed-bottom" id="bottom_nav">
-  
-        <a href="#">
-          <button type="button" class="btn btn-default btn-lg" id="home">
-              <img id="img_icon" src="../static/icon/home.png" alt="">
-              首页
-          </button>
-        </a>
-  
-        <a href="./search.html">
-          <button type="button" class="btn btn-default btn-lg" id="home">
-            <span>
-              <img id="img_icon" src="../static/icon/search.png" alt="">
-              发现
-            </span>
-              
-            </i>
-          </button>
-        </a>
-        <a href="#">
-          <button type="button" class="btn btn-default btn-lg" id="home">
-            <span>
-              <img id="img_icon" src="../static/icon/me.png" alt="">
-              我
-            </span>
-          </button>
-        </a>
-      </nav>
-    </footer>
+    <nav class="navbar-fixed-bottom" id="bottom_nav">
+
+      <a href="#">
+        <button type="button" class="btn btn-default btn-lg" id="home">
+          <img id="img_icon" src="../static/icon/home.png" alt=""> 首页
+        </button>
+      </a>
+
+      <a href="./search.html">
+        <button type="button" class="btn btn-default btn-lg" id="home">
+          <span>
+            <img id="img_icon" src="../static/icon/search.png" alt=""> 发现
+          </span>
+
+          </i>
+        </button>
+      </a>
+      <a href="me_notLogIn.html">
+        <button type="button" class="btn btn-default btn-lg" id="home">
+          <span>
+            <img id="img_icon" src="../static/icon/me.png" alt=""> 我
+          </span>
+        </button>
+      </a>
+    </nav>
+  </footer>
 
 
   <!-- <div id="app">

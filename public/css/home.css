@@ -14,20 +14,20 @@
   width: 100%;
 }
 
-h1 {
-  margin: 2rem 0;
-  text-align: center;
+.media {
+  margin: 0;
+  padding: 0.4rem
 }
 
 
-li.article {
-  display: block;
-  width: 100%;
-  height: 8rem;
-  font-size: 3rem;
-}
 
 .badge {
   font-size: 2rem;
   margin: 2rem 1rem 2rem 0;
 }
+
+.article_date {
+  float: right;
+  margin-right: 2rem;
+}
+
