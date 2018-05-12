@@ -23,7 +23,7 @@
   <!-- <link rel="stylesheet" href="../css/stu_login_reg.css"> -->
 
   <!-- 登录注册 -->
-  <!-- <script>
+  <script>
     //注册
 
     $(function () {
@@ -65,7 +65,7 @@
             if (res.code) {
               alert('登录失败,' + res.msg);
             } else {
-              alert('登录成功');
+              location.href = '/stu_me.html';
             }
           },
           error(err) {
@@ -74,7 +74,7 @@
         });
       });
     });
-  </script> -->
+  </script>
 
 
 </head>
@@ -99,23 +99,21 @@
 
 
   <form action="">
-    
+
     <label for="">用户：</label>
     <input type="text" id="user">
     <br />
     <label for="">密码：</label>
     <input type="password" id="pass">
     <br />
-    <a href="#">
-      <input type="button" value="注册" id="btn_reg">
-    </a>
-    <a href="stu_me.html">
-      <input type="button" value="登录" id="btn_login">
-    </a>
+
+    <input type="button" value="注册" id="btn_reg">
+
+    <!-- <a href="stu_me.html"> -->
+    <input type="button" value="登录" id="btn_login">
+    <!-- </a> -->
 
   </form>
-
-
 
 
 </body>
