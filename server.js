@@ -3,13 +3,12 @@ const mysql = require('mysql');
 const consolidate = require('consolidate');
 
 
-const router = require('./routes/router');
-
+//创建express服务器连接
 const app = express();
-
+//监听
 app.listen(8080);
 
-//数据库
+//数据库连接
 const db = mysql.createPool({
   host: 'localhost',
   user: 'root',
@@ -17,6 +16,9 @@ const db = mysql.createPool({
   database: 'gra'
 });
 
+//登录模块路由
+const router = require('./routes/router');
+app.use(router);
 
 //静态文件读取
 app.use('/public', express.static('public'));
@@ -24,7 +26,7 @@ app.use('/static', express.static('static'));
 app.use(express.static('views'));
 
 
-app.use(router);
+
 
 
 //模板引擎配置
@@ -34,6 +36,21 @@ app.set('view engine', 'html');
 app.set('views', './views');
 //使用引擎
 app.engine('html', consolidate.ejs);
+
+
+//职位搜索
+app.get('/search.html', (req, res) => {
+
+  db.query('SELECT * FROM job_search_list', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('database error').end();
+    } else {
+      // console.log(data);
+      res.render('search.ejs', {search_list: data});
+    }
+  });
+});
 
 
 

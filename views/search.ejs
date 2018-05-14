@@ -7,9 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>发现</title>
 
-  <script src="../public/lib/jquery-3.3.1.js"></script>
-  <link rel="stylesheet" href="../public/lib/bt-3.3.7.min.css">
-  <script src="../public/lib/bt-3.3.7.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
   <link rel="stylesheet" href="../public/css/main.css">
   <link rel="stylesheet" href="../public/css/search.css">
@@ -118,33 +119,22 @@
 
   </div>
 
-  <ul class="list-group">
-    <li class="list-group-item list-group-item-default article">
-      <span class="badge">300/天</span>
-      <h3>吉他手</h3>
-      <h5>飞儿乐队</h5>
-    </li>
-    <li class="list-group-item list-group-item-info article">
-      <span class="badge">500/天</span>
-      <h3>钢琴家教</h3>
-      <h5>星海音乐有限公司</h5>
-    </li>
-    <li class="list-group-item list-group-item-warning article">
-      <span class="badge">200/天</span>
-      <h3>游泳教练</h3>
-      <h5>珠海体育有限公司</h5>
-    </li>
-    <li class="list-group-item list-group-item-danger article">
-      <span class="badge">100/天</span>
-      <h3>外卖配送</h3>
-      <h5>美团</h5>
-    </li>
-    <li class="list-group-item list-group-item-info article">
-      <span class="badge">50/天</span>
-      <h3>发小广告</h3>
-      <h5>xxx</h5>
-    </li>
-  </ul>
+  <div class="list-group">
+    <% for(var i = 0; i < search_list.length; i++) { %>
+    
+    <a href="#" class="list-group-item list-group-item-warning">
+
+      <h4><%= search_list[i].list_title %></h4>
+      <br />
+      <h6><%= search_list[i].announcer %></h6>
+      <br />
+
+
+    </a>
+
+    <% } %>
+    
+  </div>
 
   <!-- 底部导航 -->
   <footer class="footer_nav">
