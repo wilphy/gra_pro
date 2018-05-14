@@ -1,214 +1,82 @@
-const http = require('http');
-const fs = require('fs');
-const mysql = require('mysql');
-const url = require('url');
 const express = require('express');
-const path = require('path');
-const router = require('./routes/route')
+const mysql = require('mysql');
+const consolidate = require('consolidate');
 
+
+const router = require('./routes/router');
 
 const app = express();
 
-//静态文件读取
-app.use('/public', express.static('public'));
-app.use('/static', express.static('static'));
-app.use(express.static('views'));
+app.listen(8080);
 
 //数据库
-let db = mysql.createPool({
+const db = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: '123456',
   database: 'gra'
 });
 
-//测试数据库连接
-db.query(`SELECT * FROM stu_user`, (err, data) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('数据库连接成功');
-  }
-});
+
+//静态文件读取
+app.use('/public', express.static('public'));
+app.use('/static', express.static('static'));
+app.use(express.static('views'));
+
 
 app.use(router);
 
-app.listen(8080);
 
-//hhtp服务器 登录、注册
-// let httpServer = http.createServer((req, res) => {
-
-//   let {
-//     pathname,
-//     query
-//   } = url.parse(req.url, true);
-
-//   //注册接口
-//   if (pathname == '/reg') {
-
-//     let {
-//       user,
-//       pass
-//     } = query;
-
-//     //1.检验数据
-//     if (!/^\w{6,32}$/.test(user)) {
-//       res.write(JSON.stringify({
-//         code: 1,
-//         msg: '用户名不符合规范'
-//       }));
-//       res.end();
-
-//     } else if (!/^.{6,32}$/.test(pass)) {
-//       res.write(JSON.stringify({
-//         code: 1,
-//         msg: '密码不符合规范'
-//       }));
-//       res.end();
-
-//     } else {
-
-//       //2.检验用户名是否重复
-//       db.query(`SELECT * FROM stu_user WHERE username='${user}'`, (err, data) => {
-//         if (err) {
-//           res.write(JSON.stringify({
-//             code: 1,
-//             msg: '数据库有误'
-//           }));
-//           res.end();
-
-//         } else if (data.length > 0) {
-//           res.write(JSON.stringify({
-//             code: 1,
-//             msg: '用户名已存在'
-//           }));
-//           res.end();
-
-//         } else {
-
-//           //3.插入
-//           db.query(`INSERT INTO stu_user (username, password,online) VALUES('${user}', '${pass}', 0)`, err => {
-//             if (err) {
-//               res.write(JSON.stringify({
-//                 code: 1,
-//                 msg: '数据库有误'
-//               }));
-//               res.end();
-
-//             } else {
-//               res.write(JSON.stringify({
-//                 code: 0,
-//                 msg: '注册成功'
-//               }));
-
-//               res.end();
-
-//               // fs.readFile(`/views/reg_succes.html`, (err, data) => {
-//               //   if(err) {
-//               //     res.writeHead(404);
-//               //     res.write('Not Found');
-//               //   } else {
-//               //     res.write(data);
-//               //   }
-//               // });
-
-//               // res.end();
-
-//             }
-//           });
-//         }
-//       });
-//     }
-
-//     console.log('请求了注册', query);
+//模板引擎配置
+//输出html
+app.set('view engine', 'html');
+//模板文件位置
+app.set('views', './views');
+//使用引擎
+app.engine('html', consolidate.ejs);
 
 
-//     //登录接口
-//   } else if (pathname == '/login') {
+
+//学生个人信息
+app.get('/stu_info.html', (req, res) => {
+
+  db.query('SELECT * FROM stu_info', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('database error').end();
+    } else {
+      // console.log(data);
+      res.render('stu_info.ejs', {stu_info: data});
+    }
+  });
+});
 
 
-//     let {
-//       user,
-//       pass
-//     } = query;
+//学生投递信息
+app.get('/stu_send.html', (req, res) => {
 
-//     //1.校验数据
-//     if (!/^\w{6,32}$/.test(user)) {
-//       res.write(JSON.stringify({
-//         code: 1,
-//         msg: '用户名不符合规范'
-//       }));
-//       res.end();
+  db.query('SELECT * FROM stu_send', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('database error').end();
+    } else {
+      // console.log(data);
+      res.render('stu_send.ejs', {stu_send: data});
+    }
+  });
+});
 
-//     } else if (!/^\w{6,32}$/.test(pass)) {
-//       res.write(JSON.stringify({
-//         code: 1,
-//         msg: '密码不符合规范'
-//       }));
-//       res.end();
+//学生职位收藏
+app.get('/stu_like.html', (req, res) => {
 
-//     } else {
-//       //2.取数据
-//       db.query(`SELECT ID,password FROM stu_user WHERE username='${user}'`, (err, data) => {
-//         if (err) {
-//           res.write(JSON.stringify({
-//             code: 1,
-//             msg: '数据库有误'
-//           }));
-//           res.end();
-
-//         } else if (data.length == 0) {
-//           res.write(JSON.stringify({
-//             code: 1,
-//             msg: '用户名不存在'
-//           }));
-//           res.end();
-
-//         } else if (data[0].password != pass) {
-//           res.write(JSON.stringify({
-//             code: 1,
-//             msg: '用户名或密码错误'
-//           }));
-//           res.end();
-
-//         } else {
-//           //3.设置状态
-//           db.query(`UPDATE stu_user SET online=1 WHERE ID=${data[0].ID}`, (err, data) => {
-//             if (err) {
-//               res.write(JSON.stringify({
-//                 code: 1,
-//                 msg: '数据库有误'
-//               }));
-//               res.end();
-
-//             } else {
-//               res.write(JSON.stringify({
-//                 code: 0,
-//                 msg: '登录成功'
-//               }));
-//               res.end();
-//             }
-//           });
-//         }
-//       });
-
-//     }
-
-//     console.log('请求了登录', query);
-
-//   } else {
-//     //读文件
-//     fs.readFile(`views${pathname}`, (err, data) => {
-//       if (err) {
-//         res.writeHead(404);
-//         res.write('Not Found');
-//       } else {
-//         res.write(data);
-//       }
-
-//       res.end();
-//     });
-//   }
-
-// });
+  db.query('SELECT * FROM stu_like', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('database error').end();
+    } else {
+      // console.log(data);
+      res.render('stu_like.ejs', {stu_like: data});
+    }
+  });
+});
 

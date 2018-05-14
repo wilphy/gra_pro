@@ -63,8 +63,6 @@ router.get('/reg', function (req, res) {
               code: 0,
               msg: '注册成功'
             });
-
-
           }
         });
       }

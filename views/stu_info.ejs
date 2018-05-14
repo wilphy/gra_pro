@@ -5,13 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>学生_个人信息</title>
-
-  <script src="../public/lib/jquery-3.3.1.js"></script>
-  <link rel="stylesheet" href="../public/lib/bt-3.3.7.min.css">
-  <script src="../public/lib/bt-3.3.7.min.js"></script>
+  <title>Document</title>
 
   <link rel="stylesheet" href="../public/css/main.css">
+
+  <style>
+    ul{
+      margin: 0 auto;
+      text-align: center;
+      font-size: 2rem;
+    }
+    li {
+      list-style-type: none;
+      margin: 2rem 0;
+    }
+  </style>
 
 </head>
 
@@ -27,7 +35,21 @@
 
   </header>
 
-  <img src="../static/icon/me.png" alt="">
+  <ul>
+
+    <li>
+      <%= stu_info[1].realname %>
+    </li>
+    
+    <li>
+      <%= stu_info[1].email %>
+    </li>
+
+    <li>
+      <%= stu_info[1].info %>
+    </li>
+
+  </ul>
 
 </body>
 

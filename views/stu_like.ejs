@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>学生_收藏</title>
+
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="../public/css/main.css">
+
+  <style>
+    div{
+      margin: 0 auto;
+      text-align: center;
+      font-size: 2rem;
+    }
+    a {
+      margin: 1rem 0;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <!-- 返回按钮 -->
+    <a href="stu_me.html" id="back_btn">
+        <img id="img_icon" src="../static/icon/back.png" alt="">
+    </a>
+
+    <h1 style="text-align: center">我的收藏</h1>
+
+  </header>
+
+  <div class="list-group">
+    <% for(var i = 0; i < stu_like.length; i++) { %>
+    
+    <a href="#" class="list-group-item list-group-item-success">
+
+      职位名称：<%= stu_like[i].job_name %>
+      <br />
+      公司名称：<%= stu_like[i].job_comp %>
+
+    </a>
+
+    <% } %>
+    
+  </div>
+
+</body>
+
+</html>
