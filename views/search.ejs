@@ -39,90 +39,11 @@
     </span>
   </div>
 
-  <!-- 筛选菜单 -->
-
-  <div class="container">
-    <!-- Split button -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-info">城市</button>
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#">北京</a>
-        </li>
-        <li>
-          <a href="#">上海</a>
-        </li>
-        <li>
-          <a href="#">广州</a>
-        </li>
-        <li>
-          <a href="#">深圳</a>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li>
-          <a href="#">Separated link</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Split button -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-info">空闲</button>
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#">Action</a>
-        </li>
-        <li>
-          <a href="#">Another action</a>
-        </li>
-        <li>
-          <a href="#">Something else here</a>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li>
-          <a href="#">Separated link</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Split button -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-info">日薪</button>
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#">Action</a>
-        </li>
-        <li>
-          <a href="#">Another action</a>
-        </li>
-        <li>
-          <a href="#">Something else here</a>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li>
-          <a href="#">Separated link</a>
-        </li>
-      </ul>
-    </div>
-
-  </div>
 
   <div class="list-group">
     <% for(var i = 0; i < search_list.length; i++) { %>
     
-    <a href="#" class="list-group-item list-group-item-warning">
+    <a href="http://localhost:8080/job_detail.html" class="list-group-item list-group-item-warning">
 
       <h4><%= search_list[i].list_title %></h4>
       <br />

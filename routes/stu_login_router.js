@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 
-var router = express.Router();
+var stu_login_router = express.Router();
 
 //数据库
 let db = mysql.createPool({
@@ -13,8 +13,8 @@ let db = mysql.createPool({
 
 
 // 定义网站主页的路由
-//注册
-router.get('/reg', function (req, res) {
+//学生注册
+stu_login_router.get('/stu_reg', function (req, res) {
   let {
     user,
     pass
@@ -51,7 +51,7 @@ router.get('/reg', function (req, res) {
       } else {
 
         //3.插入
-        db.query(`INSERT INTO stu_user (username, password,online) VALUES('${user}', '${pass}', 0)`, err => {
+        db.query(`INSERT INTO stu_user (username,password,online) VALUES('${user}', '${pass}', 0)`, err => {
           if (err) {
             res.json({
               code: 1,
@@ -75,7 +75,7 @@ router.get('/reg', function (req, res) {
 });
 
 //登录
-router.get('/login', function (req, res) {
+stu_login_router.get('/stu_login', function (req, res) {
   let {
     user,
     pass
@@ -142,4 +142,4 @@ router.get('/login', function (req, res) {
 
 });
 
-module.exports = router;
+module.exports = stu_login_router;

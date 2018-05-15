@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>学生_收藏</title>
+  <title>发布职位</title>
 
   <script src="../public/lib/jquery-3.3.1.js"></script>
   <link rel="stylesheet" href="../public/lib/bt-3.3.7.min.css">
@@ -23,35 +23,34 @@
       <img id="img_icon" src="../static/icon/back.png" alt="">
     </a>
 
-    <h1 style="text-align: center">文章发布</h1>
+    <h1 style="text-align: center">职位发布</h1>
 
   </header>
 
-  <form action="" style="margin: 0 auto; text-align: center;">
+  <form action="http://localhost:8080/newJob" style="margin: 0 auto; text-align: center;">
 
     <div class="input-group" style="margin: 2rem;">
-      <span class="input-group-addon" id="sizing-addon2">标题</span>
-      <input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
+      <span class="input-group-addon" >职位名称</span>
+      <input id="job_title" type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
     </div>
 
-    <div class="input-group" style="margin: 2rem;">
-        <span class="input-group-addon" id="sizing-addon2">作者</span>
-        <input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
-      </div>
-  
-
-      </div>
-    </div>
 
     <div class="input-group" style="margin: 2rem;">
-      <span class="input-group-addon" id="sizing-addon2">内容</span>
+      <span class="input-group-addon" >职位描述</span>
       <div class="form-group">
-        <textarea class="form-control" rows="3"></textarea>
+        <textarea id="job_desc" class="form-control" rows="3"></textarea>
       </div>
     </div>
 
-    <a href="./comp_me.html">
-      <button class="btn btn-info btn-lg" id="btn_exit" onclick="alert('发布成功')">发布</button>
+    <div class="input-group" style="margin: 2rem;">
+      <span class="input-group-addon" >职位要求</span>
+      <div class="form-group">
+        <textarea id="job_req" class="form-control" rows="3"></textarea>
+      </div>
+    </div>
+
+    <a href="#">
+      <button class="btn btn-info btn-lg" id="btn_exit">发布</button>
     </a>
 
   </form>

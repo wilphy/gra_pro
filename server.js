@@ -16,15 +16,27 @@ const db = mysql.createPool({
   database: 'gra'
 });
 
-//登录模块路由
-const router = require('./routes/router');
-app.use(router);
+//学生登录模块路由
+const stu_login_router = require('./routes/stu_login_router');
+app.use(stu_login_router);
 
-//静态文件读取
+//企业登录模块路由
+const comp_login_router = require('./routes/comp_login_router');
+app.use(comp_login_router);
+
+//简历投递
+const send_router = require('./routes/send_router');
+app.use(send_router);
+
+//发布新职位
+const newJob_router = require('./routes/newJob_router');
+app.use(newJob_router);
+
+
+//静态资源读取
 app.use('/public', express.static('public'));
 app.use('/static', express.static('static'));
 app.use(express.static('views'));
-
 
 
 
@@ -97,3 +109,16 @@ app.get('/stu_like.html', (req, res) => {
   });
 });
 
+//企业个人信息
+app.get('/comp_info.html', (req, res) => {
+
+  db.query('SELECT * FROM comp_info', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('database error').end();
+    } else {
+      // console.log(data);
+      res.render('comp_info.ejs', {comp_info: data});
+    }
+  });
+});

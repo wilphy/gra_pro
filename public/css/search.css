@@ -20,6 +20,10 @@
   background-color: #aaa;
 }
 
+.list-group {
+  margin-top: 2rem;
+}
+
 .list-group-item {
   margin: 2px;
   border: hotpink solid 1px;
