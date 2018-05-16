@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 
-var comp_login_router = express.Router();
+var comp_login = express.Router();
 
 //数据库
 let db = mysql.createPool({
@@ -14,7 +14,7 @@ let db = mysql.createPool({
 
 // 定义网站主页的路由
 //学生注册
-comp_login_router.get('/comp_reg', function (req, res) {
+comp_login.get('/comp_reg', function (req, res) {
   let {
     user,
     pass
@@ -75,7 +75,7 @@ comp_login_router.get('/comp_reg', function (req, res) {
 });
 
 //登录
-comp_login_router.get('/comp_login', function (req, res) {
+comp_login.get('/comp_login', function (req, res) {
   let {
     user,
     pass
@@ -142,4 +142,4 @@ comp_login_router.get('/comp_login', function (req, res) {
 
 });
 
-module.exports = comp_login_router;
+module.exports = comp_login;

@@ -6,7 +6,7 @@ const consolidate = require('consolidate');
 //创建express服务器连接
 const app = express();
 //监听
-app.listen(8080);
+app.listen(9527);
 
 //数据库连接
 const db = mysql.createPool({
@@ -16,21 +16,7 @@ const db = mysql.createPool({
   database: 'gra'
 });
 
-//学生登录模块路由
-const stu_login_router = require('./routes/stu_login_router');
-app.use(stu_login_router);
 
-//企业登录模块路由
-const comp_login_router = require('./routes/comp_login_router');
-app.use(comp_login_router);
-
-//简历投递
-const send_router = require('./routes/send_router');
-app.use(send_router);
-
-//发布新职位
-const newJob_router = require('./routes/newJob_router');
-app.use(newJob_router);
 
 
 //静态资源读取
@@ -50,64 +36,44 @@ app.set('views', './views');
 app.engine('html', consolidate.ejs);
 
 
-//职位搜索
-app.get('/search.html', (req, res) => {
+//学生登录模块路由
+const stu_login = require('./routes/stu_login');
+app.use(stu_login);
 
-  db.query('SELECT * FROM job_search_list', (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('database error').end();
-    } else {
-      // console.log(data);
-      res.render('search.ejs', {search_list: data});
-    }
-  });
-});
+//企业登录模块路由
+const comp_login = require('./routes/comp_login');
+app.use(comp_login);
 
+// //简历投递
+// const send_router = require('./routes/send_router');
+// app.use(send_router);
+
+//发布新职位
+// const newJob_router = require('./routes/newJob_router');
+// app.use(newJob_router);
+
+//职位列表
+const search = require('./routes/search');
+app.use(search);
+
+
+//职位详情
+const job_detail = require('./routes/job_detail');
+app.use(job_detail);
 
 
 //学生个人信息
-app.get('/stu_info.html', (req, res) => {
+const stu_info = require('./routes/stu_info');
+app.use(stu_info);
 
-  db.query('SELECT * FROM stu_info', (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('database error').end();
-    } else {
-      // console.log(data);
-      res.render('stu_info.ejs', {stu_info: data});
-    }
-  });
-});
+//学生个人信息
+const stu_send = require('./routes/stu_send');
+app.use(stu_send);
 
-
-//学生投递信息
-app.get('/stu_send.html', (req, res) => {
-
-  db.query('SELECT * FROM stu_send', (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('database error').end();
-    } else {
-      // console.log(data);
-      res.render('stu_send.ejs', {stu_send: data});
-    }
-  });
-});
 
 //学生职位收藏
-app.get('/stu_like.html', (req, res) => {
-
-  db.query('SELECT * FROM stu_like', (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('database error').end();
-    } else {
-      // console.log(data);
-      res.render('stu_like.ejs', {stu_like: data});
-    }
-  });
-});
+const stu_like = require('./routes/stu_like');
+app.use(stu_like);
 
 //企业个人信息
 app.get('/comp_info.html', (req, res) => {
@@ -118,7 +84,9 @@ app.get('/comp_info.html', (req, res) => {
       res.status(500).send('database error').end();
     } else {
       // console.log(data);
-      res.render('comp_info.ejs', {comp_info: data});
+      res.render('comp_info.ejs', {
+        comp_info: data
+      });
     }
   });
 });
