@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 
-var job_list = express.Router();
+var stu_login = express.Router();
 
 //数据库
 let db = mysql.createPool({
@@ -14,7 +14,7 @@ let db = mysql.createPool({
 
 // 定义网站主页的路由
 //学生注册
-job_list.get('/stu_reg', function (req, res) {
+stu_login.get('/stu_reg', function (req, res) {
   let {
     user,
     pass
@@ -75,7 +75,7 @@ job_list.get('/stu_reg', function (req, res) {
 });
 
 //登录
-job_list.get('/stu_login', function (req, res) {
+stu_login.get('/stu_login', function (req, res) {
   let {
     user,
     pass
@@ -142,4 +142,4 @@ job_list.get('/stu_login', function (req, res) {
 
 });
 
-module.exports = job_list;
+module.exports = stu_login;

@@ -2,6 +2,14 @@ const express = require('express');
 const mysql = require('mysql');
 const consolidate = require('consolidate');
 
+const static=require('express-static');
+const bodyParser=require('body-parser');
+const multer=require('multer');
+const multerObj=multer({dest: './static/upload'});
+const cookieParser=require('cookie-parser');
+const cookieSession=require('cookie-session');
+const expressRoute=require('express-route');
+
 
 //创建express服务器连接
 const app = express();
@@ -16,16 +24,10 @@ const db = mysql.createPool({
   database: 'gra'
 });
 
-
-
-
 //静态资源读取
 app.use('/public', express.static('public'));
 app.use('/static', express.static('static'));
 app.use(express.static('views'));
-
-
-
 
 //模板引擎配置
 //输出html
@@ -44,49 +46,56 @@ app.use(stu_login);
 const comp_login = require('./routes/comp_login');
 app.use(comp_login);
 
-// //简历投递
-// const send_router = require('./routes/send_router');
-// app.use(send_router);
-
-//发布新职位
-// const newJob_router = require('./routes/newJob_router');
-// app.use(newJob_router);
-
 //职位列表
 const search = require('./routes/search');
 app.use(search);
-
 
 //职位详情
 const job_detail = require('./routes/job_detail');
 app.use(job_detail);
 
-
 //学生个人信息
 const stu_info = require('./routes/stu_info');
 app.use(stu_info);
 
-//学生个人信息
+//学生投递信息
 const stu_send = require('./routes/stu_send');
 app.use(stu_send);
-
 
 //学生职位收藏
 const stu_like = require('./routes/stu_like');
 app.use(stu_like);
 
-//企业个人信息
-app.get('/comp_info.html', (req, res) => {
+//企业用户信息
+const comp_info = require('./routes/comp_info');
+app.use(comp_info);
 
-  db.query('SELECT * FROM comp_info', (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('database error').end();
-    } else {
-      // console.log(data);
-      res.render('comp_info.ejs', {
-        comp_info: data
-      });
-    }
-  });
-});
+
+
+/***********  管理员   **************************************************/
+
+//1.获取请求数据
+//get自带
+app.use(bodyParser.urlencoded());
+app.use(multerObj.any());
+
+//2.cookie、session
+app.use(cookieParser());
+(function (){
+  var keys=[];
+  for(var i=0;i<100000;i++){
+    keys[i]='a_'+Math.random();
+  }
+  app.use(cookieSession({
+    name: 'sess_id',
+    keys: keys,
+    maxAge: 20*60*1000  //20min
+  }));
+})();
+
+
+////管理员登录
+app.use('/admin/', require('./routes/admin.js')());
+
+// const admin = require('./routes/admin');
+// app.use(admin);
