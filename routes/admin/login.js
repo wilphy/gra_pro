@@ -1,11 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
-// const common=require('../libs/common');
 
-// var admin_login = express.Router();
-
-//数据库
-let db = mysql.createPool({
+var db = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: '123456',
@@ -15,20 +11,10 @@ let db = mysql.createPool({
 module.exports = function () {
   var router = express.Router();
 
-  //检查登录状态
-  router.use((req, res, next) => {
-    if (!req.session['admin_id'] && req.url != '/login') { //没有登录
-      res.redirect('/admin/login');
-    } else {
-      next();
-    }
-  });
-
-  //
-  router.get('/login', (req, res) => {
+  router.get('/', (req, res) => {
     res.render('admin/login.ejs', {});
   });
-  router.post('/login', (req, res) => {
+  router.post('/', (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
 
@@ -50,14 +36,6 @@ module.exports = function () {
         }
       }
     });
-  });
-
-  router.get('/', (req, res) => {
-    res.render('admin/index.ejs', {});
-  });
-
-  router.get('/banners', (req, res) => {
-    res.render('admin/banners.ejs', {})
   });
 
   return router;

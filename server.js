@@ -95,7 +95,7 @@ app.use(cookieParser());
 
 
 ////管理员登录
-app.use('/admin/', require('./routes/admin.js')());
+app.use('/admin/', require('./routes/admin/index.js')());
 
 // const admin = require('./routes/admin');
 // app.use(admin);
