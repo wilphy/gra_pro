@@ -38,6 +38,8 @@ app.set('views', './views');
 app.engine('html', consolidate.ejs);
 
 
+/***********  用户功能路由模块   **************************************************/
+
 //学生登录模块路由
 const stu_login = require('./routes/stu_login');
 app.use(stu_login);
@@ -70,6 +72,9 @@ app.use(stu_like);
 const comp_info = require('./routes/comp_info');
 app.use(comp_info);
 
+//发布职位
+const newJob = require('./routes/newJob');
+app.use(newJob);
 
 
 /***********  管理员   **************************************************/

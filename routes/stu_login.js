@@ -69,7 +69,7 @@ stu_login.get('/stu_reg', function (req, res) {
     });
   }
 
-  console.log('请求了注册', req.query);
+  console.log('学生请求了注册', req.query);
 
 
 });
@@ -138,7 +138,7 @@ stu_login.get('/stu_login', function (req, res) {
 
   }
 
-  console.log('请求了登录', req.query);
+  console.log('学生请求了登录', req.query);
 
 });
 

@@ -51,7 +51,7 @@ comp_login.get('/comp_reg', function (req, res) {
       } else {
 
         //3.插入
-        db.query(`INSERT INTO comp_user (username, password) VALUES('${user}', '${pass}', 0)`, err => {
+        db.query(`INSERT INTO comp_user (username, password, online) VALUES('${user}', '${pass}', 0)`, err => {
           if (err) {
             res.json({
               code: 1,
@@ -69,7 +69,7 @@ comp_login.get('/comp_reg', function (req, res) {
     });
   }
 
-  console.log('请求了注册', req.query);
+  console.log('企业请求了注册', req.query);
 
 
 });
@@ -138,7 +138,7 @@ comp_login.get('/comp_login', function (req, res) {
 
   }
 
-  console.log('请求了登录', req.query);
+  console.log('企业请求了登录', req.query);
 
 });
 

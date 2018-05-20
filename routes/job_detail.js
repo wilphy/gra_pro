@@ -12,7 +12,6 @@ let db = mysql.createPool({
 });
 
 
-
 //职位详情
 job_detail.get('/job_detail', (req, res) => {
   if (req.query.id) {

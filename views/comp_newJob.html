@@ -13,6 +13,36 @@
 
   <link rel="stylesheet" href="../public/css/main.css">
 
+  <script>
+    //注册
+
+    $(function () {
+      $('#btn_anno').click(function () {
+        $.ajax({
+          url: '/newJob',
+          data: {
+            job_name: $('#job_name').val(),
+            job_comp: $('#job_comp').val(),
+            job_desc: $('#job_desc').val(),
+            job_req: $('#job_req').val()
+          },
+          dataType: 'json',
+          success(res) {
+            if (res.code) {
+              alert('发布失败,' + res.msg);
+            } else {
+              location.href = '/comp_me.html';
+            }
+          },
+          error(err) {
+            alert('网络不通');
+          }
+        });
+      });
+    });
+
+  </script>
+
 </head>
 
 <body>
@@ -27,31 +57,33 @@
 
   </header>
 
-  <form action="http://localhost:8080/newJob" style="margin: 0 auto; text-align: center;">
+  <form action="" style="margin: 0 auto; text-align: center;">
 
     <div class="input-group" style="margin: 2rem;">
-      <span class="input-group-addon" >职位名称</span>
-      <input id="job_title" type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
+      <span class="input-group-addon">职位名称</span>
+      <input id="job_name" type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
     </div>
 
+    <div class="input-group" style="margin: 2rem;">
+      <span class="input-group-addon">发布公司</span>
+      <input id="job_comp" type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
+    </div>
 
     <div class="input-group" style="margin: 2rem;">
-      <span class="input-group-addon" >职位描述</span>
+      <span class="input-group-addon">职位描述</span>
       <div class="form-group">
         <textarea id="job_desc" class="form-control" rows="3"></textarea>
       </div>
     </div>
 
     <div class="input-group" style="margin: 2rem;">
-      <span class="input-group-addon" >职位要求</span>
+      <span class="input-group-addon">职位要求</span>
       <div class="form-group">
         <textarea id="job_req" class="form-control" rows="3"></textarea>
       </div>
     </div>
 
-    <a href="#">
-      <button class="btn btn-info btn-lg" id="btn_exit">发布</button>
-    </a>
+    <input type="button" class="btn btn-info btn-lg" id="btn_anno" value="发布"></input>
 
   </form>
 
