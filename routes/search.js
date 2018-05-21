@@ -11,8 +11,6 @@ let db = mysql.createPool({
   database: 'gra'
 });
 
-
-
 //职位列表
 search.get('/search.html', (req, res) => {
 
@@ -28,6 +26,5 @@ search.get('/search.html', (req, res) => {
     }
   });
 });
-
 
 module.exports = search;;

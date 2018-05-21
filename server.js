@@ -11,6 +11,9 @@ const cookieSession=require('cookie-session');
 const expressRoute=require('express-route');
 
 
+
+/***********   基本配置  **************************************************/
+
 //创建express服务器连接
 const app = express();
 //监听
@@ -38,15 +41,11 @@ app.set('views', './views');
 app.engine('html', consolidate.ejs);
 
 
-/***********  用户功能路由模块   **************************************************/
+/***********  学生用户功能路由模块   **************************************************/
 
 //学生登录模块路由
 const stu_login = require('./routes/stu_login');
 app.use(stu_login);
-
-//企业登录模块路由
-const comp_login = require('./routes/comp_login');
-app.use(comp_login);
 
 //职位列表
 const search = require('./routes/search');
@@ -68,6 +67,13 @@ app.use(stu_send);
 const stu_like = require('./routes/stu_like');
 app.use(stu_like);
 
+
+/***********  企业用户功能路由模块   **************************************************/
+
+//企业登录模块路由
+const comp_login = require('./routes/comp_login');
+app.use(comp_login);
+
 //企业用户信息
 const comp_info = require('./routes/comp_info');
 app.use(comp_info);
@@ -77,7 +83,7 @@ const newJob = require('./routes/newJob');
 app.use(newJob);
 
 
-/***********  管理员   **************************************************/
+/********************  管理员   *******************************************/
 
 //1.获取请求数据
 //get自带

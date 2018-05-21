@@ -11,8 +11,6 @@ let db = mysql.createPool({
   database: 'gra'
 });
 
-
-// 定义网站主页的路由
 //学生注册
 stu_login.get('/stu_reg', function (req, res) {
   let {
@@ -49,7 +47,6 @@ stu_login.get('/stu_reg', function (req, res) {
         });
 
       } else {
-
         //3.插入
         db.query(`INSERT INTO stu_user (username,password,online) VALUES('${user}', '${pass}', 0)`, err => {
           if (err) {
@@ -68,10 +65,7 @@ stu_login.get('/stu_reg', function (req, res) {
       }
     });
   }
-
   console.log('学生请求了注册', req.query);
-
-
 });
 
 //登录
@@ -130,16 +124,12 @@ stu_login.get('/stu_login', function (req, res) {
               code: 0,
               msg: '登录成功'
             })
-
           }
         });
       }
     });
-
   }
-
   console.log('学生请求了登录', req.query);
-
 });
 
 module.exports = stu_login;

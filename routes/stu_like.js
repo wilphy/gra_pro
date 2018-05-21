@@ -11,8 +11,6 @@ let db = mysql.createPool({
   database: 'gra'
 });
 
-
-
 //学生投递信息
 stu_like.get('/stu_like.html', (req, res) => {
 
@@ -28,6 +26,5 @@ stu_like.get('/stu_like.html', (req, res) => {
     }
   });
 });
-
 
 module.exports = stu_like;;

@@ -1,7 +1,9 @@
 const express = require('express');
 const mysql = require('mysql');
+const common = require('../../lib/common');
 
-var db = mysql.createPool({
+
+const db = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: '123456',
@@ -16,7 +18,7 @@ module.exports = function () {
   });
   router.post('/', (req, res) => {
     var username = req.body.username;
-    var password = req.body.password;
+    var password = common.md5(req.body.password);
 
     db.query(`SELECT * FROM admin WHERE username='${username}'`, (err, data) => {
       if (err) {

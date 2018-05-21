@@ -11,8 +11,6 @@ let db = mysql.createPool({
   database: 'gra'
 });
 
-
-
 //学生个人信息
 stu_info.get('/stu_info', (req, res) => {
 
@@ -28,6 +26,5 @@ stu_info.get('/stu_info', (req, res) => {
     }
   });
 });
-
 
 module.exports = stu_info;;
