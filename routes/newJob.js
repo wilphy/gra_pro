@@ -17,11 +17,12 @@ newJob.get('/newJob', function (req, res) {
   let {
     job_name,
     job_comp,
+    email,
     job_desc,
     job_req
   } = req.query;
 
-  if (!job_name || !job_comp || !job_desc || !job_req) {
+  if (!job_name || !job_comp || email || !job_desc || !job_req) {
     res.json({
       code: 1,
       msg: '参数错误'
@@ -29,7 +30,7 @@ newJob.get('/newJob', function (req, res) {
 
   } else {
     //插入
-    db.query(`INSERT INTO job (job_name,job_comp,job_desc,job_req) VALUES('${job_name}', '${job_comp}', '${job_desc}', '${job_req}')`, err => {
+    db.query(`INSERT INTO job (job_name,job_comp,email,job_desc,job_req) VALUES('${job_name}', '${job_comp}', '${email}', '${job_desc}', '${job_req}')`, err => {
       if (err) {
         res.json({
           code: 1,

@@ -119,6 +119,7 @@ stu_login.get('/stu_login', function (req, res) {
             });
 
           } else {
+            //设置浏览器cookie
             res.cookie('user', user);
             res.json({
               code: 0,

@@ -13,9 +13,12 @@ const db = mysql.createPool({
 module.exports = function () {
   var router = express.Router();
 
+  //get请求时获取页面
   router.get('/', (req, res) => {
     res.render('admin/login.ejs', {});
   });
+
+  //post请求时只处理数据
   router.post('/', (req, res) => {
     var username = req.body.username;
     var password = common.md5(req.body.password);

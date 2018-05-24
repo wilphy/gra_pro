@@ -28,3 +28,16 @@
   margin: 2px;
   border: hotpink solid 1px;
 }
+
+form {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#keyWord {
+  width: 60%;
+}
+#btn_search {
+  width: 20%
+}

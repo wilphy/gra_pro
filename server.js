@@ -29,7 +29,6 @@ const db = mysql.createPool({
 
 //静态资源读取
 app.use('/public', express.static('public'));
-app.use('/static', express.static('static'));
 app.use(express.static('views'));
 
 //模板引擎配置
@@ -66,6 +65,10 @@ app.use(stu_send);
 //学生职位收藏
 const stu_like = require('./routes/stu_like');
 app.use(stu_like);
+
+//学生搜索职位
+const initiateSearch = require('./routes/initiateSearch');
+app.use(initiateSearch);
 
 
 /***********  企业用户功能路由模块   **************************************************/
