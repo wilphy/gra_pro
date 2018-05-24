@@ -20,28 +20,6 @@
   <link rel="stylesheet" href="../public/css/main.css">
   <link rel="stylesheet" href="../public/css/search.css">
 
-  <script>
-    $(function () {
-      $('#btn_search').click(function () {
-        $.ajax({
-          url: '/initiateSearch',
-          data: {
-            keyWord: $('#keyWord').val()
-          },
-          dataType: 'json',
-          success(res) {
-            // alert(res.msg);
-          },
-          error(err) {
-            // console.log(err)
-            // alert(err)
-          }
-        });
-      });
-    });
-
-  </script>
-
 
 </head>
 
@@ -51,27 +29,26 @@
   <!-- 输入框 -->
   <form action="">
     <input class="input" type="text" placeholder="请输入你要搜索的职位" id="keyWord">
-    <button class="btn btn-default" id="btn_search">search</button>
+    <input class="btn btn-default" type="button" id="btn_search" value="搜索">
   </form>
 
 
 
     <ul class="list-group">
-      <% for(var i = 0; i < job_list.length; i++) { %>
+      <% for(var i = 0; i < stu_list.length; i++) { %>
 
       <li>
       
-        <a href="/job_detail?id=<%= job_list[i].job_id %>" class="list-group-item list-group-item-warning">
+        <a href="/stu_list.html" class="list-group-item list-group-item-warning">
         
-          <h4><%= job_list[i].job_name %></h4>
+          <h4><%= stu_list[i].realname %></h4>
           <br />
-          <h6><%= job_list[i].job_comp %></h6>
-          <br />
+          <h6><%= stu_list[i].school %></h6>
+          <br>          
         </a>  
 
       </li>
 
-      
       <% } %>
 
     </ul>

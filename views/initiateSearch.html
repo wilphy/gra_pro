@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>发现</title>
+  <title>搜索结果</title>
 
   
   <script src="../public/lib/jquery-3.3.1.js"></script>
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="../public/css/search.css">
 
   <script>
-    $(function () {
+   
       $('#btn_search').click(function () {
         $.ajax({
           url: '/initiateSearch',
@@ -30,16 +30,13 @@
           },
           dataType: 'json',
           success(res) {
-            // alert(res.msg);
+            alert(res.msg);
           },
           error(err) {
-            // console.log(err)
-            // alert(err)
+            alert('网络不通');
           }
         });
       });
-    });
-
   </script>
 
 
@@ -51,31 +48,29 @@
   <!-- 输入框 -->
   <form action="">
     <input class="input" type="text" placeholder="请输入你要搜索的职位" id="keyWord">
-    <button class="btn btn-default" id="btn_search">search</button>
+    <input class="btn btn-default" type="button" id="btn_search" value="搜索">
   </form>
 
 
 
     <ul class="list-group">
-      <% for(var i = 0; i < job_list.length; i++) { %>
+      <% for(var i = 0; i < search_list.length; i++) { %>
 
       <li>
       
-        <a href="/job_detail?id=<%= job_list[i].job_id %>" class="list-group-item list-group-item-warning">
+        <a href="/job_detail?id=<%= search_list[i].job_id %>" class="list-group-item list-group-item-warning">
         
-          <h4><%= job_list[i].job_name %></h4>
+          <h4><%= search_list[i].job_name %></h4>
           <br />
-          <h6><%= job_list[i].job_comp %></h6>
+          <h6><%= search_list[i].job_comp %></h6>
           <br />
         </a>  
 
       </li>
 
-      
       <% } %>
 
     </ul>
-    
 
   <!-- 底部导航 -->
   <footer class="footer_nav">

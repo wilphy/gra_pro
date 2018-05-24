@@ -19,6 +19,31 @@
   <link rel="stylesheet" href="../public/css/main.css">
 
   <style>
+    .jumbotron {
+      border: hotpink solid 1px;
+      margin: 3rem;
+      padding: 1rem
+    }
+  </style>
+
+  <script>
+  // function getCookie(c_name) {
+  //   if (document.cookie.length > 0) {
+  //     c_start = document.cookie.indexOf(c_name + "=");
+  //     if (c_start != -1) {
+  //         c_start = c_start + c_name.length + 1
+  //         c_end = document.cookie.indexOf(";", c_start)
+  //         if (c_end == -1) c_end = document.cookie.length
+  //         return unescape(document.cookie.substring(c_start, c_end))
+  //       }
+  //     }
+  //   return ""
+  // }
+  
+
+  </script>
+
+  <style>
     #send,
     #like {
       width: 49%;
@@ -44,18 +69,24 @@
   </header>
 
   <div class="jumbotron">
-    <p> <%= job_data.job_name %> </p>
+    <p id="job_name"> <%= job_data.job_name %> </p>
     <a href="#"><%= job_data.job_comp %></a>
-    <br>
-    <br>
-    <br>
+
+    <br><br><br>
+    
+    <div id="email">
+      <h4>企业邮箱</h4>
+      <%= job_data.email %>
+    </div>
+
+    <br><br><br>
+
     <div id="job_desc">
       <h4>职位描述</h4>
       <%= job_data.job_desc %>
     </div>
-    <br>
-    <br>
-    <br>
+
+    <br><br><br>
 
     <div id="requirement">
       <h4>职位要求</h4>
@@ -64,12 +95,17 @@
 
   </div>
 
+
+
+<form action="/send">
   <div class="btn_group">
 
-    <input class="btn btn-primary btn-lg" type="button" id="send" value="应聘"></input>
-    <input class="btn btn-danger btn-lg" type="button" id="like" value="收藏"></input>
+    <input class="btn btn-primary btn-lg disabled" type="button" id="send" value="应聘"></input>
+    <input class="btn btn-danger btn-lg disabled" type="button" id="like" value="收藏"></input>
 
   </div>
+</form>
+
 
 </body>
 

@@ -14,19 +14,20 @@ let db = mysql.createPool({
 });
 
 //搜索
-initiateSearch.get('/initiateSearch', (res, req) => {
+initiateSearch.get('/initiateSearch', (req, res) => {
 
-  let keyWord = req.query;
+  let keyWord = req.query.keyWord;
+  console.log(`SELECT job_name FROM job WHERE job_name LIKE '%${keyWord}%'`)
 
-  db.query(`SELECT job_name FROM job WHERE job_name LIKE "% '${keyWord}' %"`, (err, data) => {
+  db.query(`SELECT job_name FROM job WHERE job_name LIKE '%${keyWord}%'`, (err, data) => {
     if (err) {
       console.log(err);
       res.status(500).send('database error').end();
     } else {
-      // console.log(data);
-      // res.render('search.ejs', {
-      //   job_list: data
-      // });
+      console.log(data);
+      res.render('searchResult.ejs', {
+        job_list: data
+      });
     }
   });
 });

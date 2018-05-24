@@ -1,14 +1,15 @@
 const express = require('express');
 const mysql = require('mysql');
 const consolidate = require('consolidate');
-
-const static=require('express-static');
-const bodyParser=require('body-parser');
-const multer=require('multer');
-const multerObj=multer({dest: './static/upload'});
-const cookieParser=require('cookie-parser');
-const cookieSession=require('cookie-session');
-const expressRoute=require('express-route');
+const static = require('express-static');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const multerObj = multer({
+  dest: './static/upload'
+});
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
+const expressRoute = require('express-route');
 
 
 
@@ -58,17 +59,25 @@ app.use(job_detail);
 const stu_info = require('./routes/stu_info');
 app.use(stu_info);
 
+//发布个人信息
+const stu_generate_info = require('./routes/stu_generate_info');
+app.use(stu_generate_info);
+
 //学生投递信息
-const stu_send = require('./routes/stu_send');
-app.use(stu_send);
+// const send = require('./routes/send');
+// app.use(send);
 
 //学生职位收藏
-const stu_like = require('./routes/stu_like');
-app.use(stu_like);
+// const stu_like = require('./routes/stu_like');
+// app.use(stu_like);
 
 //学生搜索职位
 const initiateSearch = require('./routes/initiateSearch');
 app.use(initiateSearch);
+
+//搜索结果
+const searchResult = require('./routes/searchResult');
+app.use(searchResult);
 
 
 /***********  企业用户功能路由模块   **************************************************/
@@ -95,15 +104,15 @@ app.use(multerObj.any());
 
 //2.cookie、session
 app.use(cookieParser());
-(function (){
-  var keys=[];
-  for(var i=0;i<100000;i++){
-    keys[i]='a_'+Math.random();
+(function () {
+  var keys = [];
+  for (var i = 0; i < 100000; i++) {
+    keys[i] = 'a_' + Math.random();
   }
   app.use(cookieSession({
     name: 'sess_id',
     keys: keys,
-    maxAge: 20*60*1000  //20min
+    maxAge: 20 * 60 * 1000 //20min
   }));
 })();
 

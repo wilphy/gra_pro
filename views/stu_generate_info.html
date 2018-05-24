@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>发布个人信息</title>
+
+    <!-- 本地库 -->
+  <script src="../public/lib/jquery-3.3.1.js"></script>
+  <link rel="stylesheet" href="../public/lib/bt-3.3.7.min.css">
+  <script src="../public/lib/bt-3.3.7.min.js"></script>
+
+
+  <!--  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+  <link rel="stylesheet" href="../public/css/main.css">
+
+  <style>
+    div{
+      margin: 0 auto;
+      text-align: center;
+      font-size: 2rem;
+    }
+    a {
+      margin: 1rem 0;
+    }
+  </style>
+
+    <script>
+
+    //发布
+    $(function () {
+      $('#stu_generate_info').click(function () {
+        $.ajax({
+          url: '/stu_generate_info',
+          data: {
+            realname: $('#realname').val(),
+            school: $('#school').val(),
+            email: $('#email').val(),
+            intro: $('#intro').val()
+          },
+          dataType: 'json',
+          success(res) {
+            if (res.code) {
+              alert('发布失败,' + res.msg);
+            } else {
+              location.href = '/stu_me.html';
+            }
+          },
+          error(err) {
+            alert('网络不通');
+          }
+        });
+      });
+    });
+
+  </script>
+
+</head>
+
+<body>
+
+  <header>
+    <!-- 返回按钮 -->
+    <a href="stu_me.html" id="back_btn">
+        <img id="img_icon" src="../public/icon/back.png" alt="">
+    </a>
+
+    <h1 style="text-align: center">发布求职个人信息</h1>
+
+  </header>
+
+  <form action="" style="margin: 0 auto; text-align: center;">
+
+      <div class="input-group" style="margin: 2rem;">
+        <span class="input-group-addon">姓名</span>
+        <input id="realname" type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
+      </div>
+  
+      <div class="input-group" style="margin: 2rem;">
+        <span class="input-group-addon">学校</span>
+        <input id="school" type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
+      </div>
+  
+      <div class="input-group" style="margin: 2rem;">
+        <span class="input-group-addon">邮箱</span>
+        <input id="email" type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
+      </div>
+  
+      <div class="input-group" style="margin: 2rem;">
+        <span class="input-group-addon">简介</span>
+        <div class="form-group">
+          <textarea id="intro" class="form-control" rows="3"></textarea>
+        </div>
+      </div>
+  
+      <input type="button" class="btn btn-info btn-lg loadingButton" id="stu_generate_info" value="发布" ></input>
+  
+    </form>
+
+</body>
+
+</html>

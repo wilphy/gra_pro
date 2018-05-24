@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 
-var stu_send = express.Router();
+var send = express.Router();
 
 //数据库
 let db = mysql.createPool({
@@ -11,23 +11,22 @@ let db = mysql.createPool({
   database: 'gra'
 });
 
-
-
 //学生投递信息
-stu_send.get('/stu_send.html', (req, res) => {
+send.get('/send', (req, res) => {
 
-  db.query('SELECT * FROM stu_send', (err, data) => {
+
+  db.query(`INSERT INTO applicate (name) VALUES('${name}')`, (err, data) => {
     if (err) {
       console.log(err);
       res.status(500).send('database error').end();
     } else {
       // console.log(data);
-      res.render('stu_send.ejs', {
-        stu_send: data
+      res.json({
+        msg: '申请成功'
       });
     }
   });
 });
 
 
-module.exports = stu_send;;
+module.exports = send;

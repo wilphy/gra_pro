@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="../public/css/main.css">
 
   <script>
-    //注册
 
+    //发布
     $(function () {
       $('#btn_anno').click(function () {
         $.ajax({
@@ -23,6 +23,7 @@
           data: {
             job_name: $('#job_name').val(),
             job_comp: $('#job_comp').val(),
+            email: $('#email').val(),
             job_desc: $('#job_desc').val(),
             job_req: $('#job_req').val()
           },

@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 
-var newJob = express.Router();
+var stu_generate_info = express.Router();
 
 //数据库
 let db = mysql.createPool({
@@ -12,17 +12,16 @@ let db = mysql.createPool({
 });
 
 
-newJob.get('/newJob', function (req, res) {
+stu_generate_info.get('/stu_generate_info', function (req, res) {
 
   let {
-    job_name,
-    job_comp,
+    realname,
+    school,
     email,
-    job_desc,
-    job_req
+    intro,
   } = req.query;
 
-  if (!job_name || !job_comp || !email || !job_desc || !job_req) {
+  if (!realname || !school || !email || !intro) {
     res.json({
       code: 1,
       msg: '参数错误'
@@ -30,7 +29,7 @@ newJob.get('/newJob', function (req, res) {
 
   } else {
     //插入
-    db.query(`INSERT INTO job (job_name,job_comp,email,job_desc,job_req) VALUES('${job_name}', '${job_comp}', '${email}', '${job_desc}', '${job_req}')`, err => {
+    db.query(`INSERT INTO stu_info (realname,school,email,intro) VALUES('${realname}', '${school}', '${email}', '${intro}')`, err => {
       if (err) {
         res.json({
           code: 1,
@@ -53,4 +52,4 @@ newJob.get('/newJob', function (req, res) {
 
 
 
-module.exports = newJob;
+module.exports = stu_generate_info;
