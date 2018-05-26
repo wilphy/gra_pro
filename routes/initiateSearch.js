@@ -17,19 +17,26 @@ let db = mysql.createPool({
 initiateSearch.get('/initiateSearch', (req, res) => {
 
   let keyWord = req.query.keyWord;
+  
   console.log(`SELECT job_name FROM job WHERE job_name LIKE '%${keyWord}%'`)
 
-  db.query(`SELECT job_name FROM job WHERE job_name LIKE '%${keyWord}%'`, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('database error').end();
-    } else {
-      console.log(data);
-      res.render('searchResult.ejs', {
-        job_list: data
-      });
-    }
-  });
+  if (keyWord == null) {
+    res.json({
+      msg: '请输入关键字'
+    })
+  } else {
+    db.query(`SELECT job_name FROM job WHERE job_name LIKE '%${keyWord}%'`, (err, data) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send('database error').end();
+      } else {
+        console.log(data);
+        res.render('search.ejs', {
+          job_list: data
+        });
+      }
+    });
+  }
 });
 
 module.exports = initiateSearch;

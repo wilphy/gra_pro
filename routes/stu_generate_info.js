@@ -19,9 +19,10 @@ stu_generate_info.get('/stu_generate_info', function (req, res) {
     school,
     email,
     intro,
+    spareTime
   } = req.query;
 
-  if (!realname || !school || !email || !intro) {
+  if (!realname || !school || !email || !intro || !spareTime) {
     res.json({
       code: 1,
       msg: '参数错误'
@@ -29,7 +30,7 @@ stu_generate_info.get('/stu_generate_info', function (req, res) {
 
   } else {
     //插入
-    db.query(`INSERT INTO stu_info (realname,school,email,intro) VALUES('${realname}', '${school}', '${email}', '${intro}')`, err => {
+    db.query(`INSERT INTO stu_list (realname,school,email,intro,spareTime) VALUES('${realname}', '${school}', '${email}', '${intro}', '${spareTime}')`, err => {
       if (err) {
         res.json({
           code: 1,

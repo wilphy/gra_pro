@@ -41,7 +41,8 @@
             realname: $('#realname').val(),
             school: $('#school').val(),
             email: $('#email').val(),
-            intro: $('#intro').val()
+            intro: $('#intro').val(),
+            spareTime: $('#spareTime').val()
           },
           dataType: 'json',
           success(res) {
@@ -96,6 +97,11 @@
         <div class="form-group">
           <textarea id="intro" class="form-control" rows="3"></textarea>
         </div>
+      </div>
+
+      <div class="input-group" style="margin: 2rem;">
+        <span class="input-group-addon">每周空闲天数</span>
+        <input id="spareTime" type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
       </div>
   
       <input type="button" class="btn btn-info btn-lg loadingButton" id="stu_generate_info" value="发布" ></input>

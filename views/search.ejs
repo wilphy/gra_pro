@@ -20,28 +20,6 @@
   <link rel="stylesheet" href="../public/css/main.css">
   <link rel="stylesheet" href="../public/css/search.css">
 
-  <script>
-    $(function () {
-      $('#btn_search').click(function () {
-        $.ajax({
-          url: '/initiateSearch',
-          data: {
-            keyWord: $('#keyWord').val()
-          },
-          dataType: 'json',
-          success(res) {
-            // alert(res.msg);
-          },
-          error(err) {
-            // console.log(err)
-            // alert(err)
-          }
-        });
-      });
-    });
-
-  </script>
-
 
 </head>
 
@@ -49,12 +27,10 @@
   <br>
 
   <!-- 输入框 -->
-  <form action="">
-    <input class="input" type="text" placeholder="请输入你要搜索的职位" id="keyWord">
+  <form action="/initiateSearch">
+    <input class="input" type="text" placeholder="请输入你要搜索的职位" name="keyWord" id="keyWord">
     <button class="btn btn-default" id="btn_search">search</button>
   </form>
-
-
 
     <ul class="list-group">
       <% for(var i = 0; i < job_list.length; i++) { %>
@@ -71,7 +47,7 @@
 
       </li>
 
-      
+
       <% } %>
 
     </ul>

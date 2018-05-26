@@ -30,6 +30,7 @@ const db = mysql.createPool({
 
 //静态资源读取
 app.use('/public', express.static('public'));
+app.use('/static', express.static('static'));
 app.use(express.static('views'));
 
 //模板引擎配置
@@ -64,20 +65,20 @@ const stu_generate_info = require('./routes/stu_generate_info');
 app.use(stu_generate_info);
 
 //学生投递信息
-// const send = require('./routes/send');
-// app.use(send);
+const send = require('./routes/send');
+app.use(send);
 
 //学生职位收藏
-// const stu_like = require('./routes/stu_like');
-// app.use(stu_like);
+// const like = require('./routes/like');
+// app.use(like);
 
-//学生搜索职位
+//搜索职位
 const initiateSearch = require('./routes/initiateSearch');
 app.use(initiateSearch);
 
 //搜索结果
-const searchResult = require('./routes/searchResult');
-app.use(searchResult);
+// const searchResult = require('./routes/searchResult');
+// app.use(searchResult);
 
 
 /***********  企业用户功能路由模块   **************************************************/
@@ -93,6 +94,10 @@ app.use(comp_info);
 //发布职位
 const newJob = require('./routes/newJob');
 app.use(newJob);
+
+//查找学生
+const findStu = require('./routes/findStu');
+app.use(findStu);
 
 
 /********************  管理员   *******************************************/
