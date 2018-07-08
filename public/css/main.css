@@ -9,18 +9,15 @@ body {
   bottom: 0;
 }
 
+#home,#search,#me {
+  width: 33.3%
+}
+
 #home {
-  width: 33%;
   float: left;
 }
 
-#search {
-  width: 34%;
-  justify-content: center;
-}
-
 #me {
-  width: 33%;
   float: right;
 }
 
